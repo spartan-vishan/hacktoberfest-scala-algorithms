@@ -249,15 +249,14 @@ import scala.collection.mutable.ArrayBuffer
 
   }
 
-  /**
-    * @author spartan-vishan
+  /** @author spartan-vishan
     * radix sort is a fast sorting algorithm specifically for integers
-    *
     * @param xs the unsorted input array
     * @return arr the sorted array
     */
   def radixSort(xs: Array[Int]): Array[Int] = {
     //first loop for every bit in xs
+
     var arr = xs
     for(shift <- Integer.SIZE - 1 until -1 by -1) { //partially sort arr
       val tmp = new Array[Int](arr.length)
@@ -276,4 +275,22 @@ import scala.collection.mutable.ArrayBuffer
     }
     arr
   }
+
+  /**
+    * Swaps two elements with indices index1 and index2
+    * in a given array used in bubbleSort and selectionSort
+    * TODO: get rid of this method, because it only introduces
+    * a side effect. Take look at the principles of Functional
+    * programming.
+    *
+    * @param array The target array that will be modified
+    * @param index1 The index of the first element that has to be swapped
+    * @param index2 The index of the second element that has to be swapped
+    */
+  private def swap(array: Array[Int], index1: Int, index2: Int): Unit = {
+    val tmp = array(index1)
+    array(index1) = array(index2)
+    array(index2) = tmp
+  }
+
 }
